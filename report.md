@@ -279,9 +279,9 @@ when we aggregate it?
 
 ```r
 ggplot(ratings, aes(x = factor(1), weight = viewers, fill = promotion)) + geom_bar(width = 1) + 
-    coord_polar(theta = "y") + opts(axis.title.x = theme_blank(), axis.title.y = theme_blank(), 
-    axis.text.x = theme_blank(), axis.text.y = theme_blank(), panel.grid.minor = theme_blank(), 
-    panel.grid.major = theme_blank(), panel.border = theme_blank()) + ggtitle("Bellator vs UFC Viewers")
+    coord_polar(theta = "y") + theme(axis.title.x = element_blank(), axis.title.y = element_blank(), 
+    axis.text.x = element_blank(), axis.text.y = element_blank(), panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank(), panel.border = element_blank()) + ggtitle("Bellator vs UFC Viewers")
 ```
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
