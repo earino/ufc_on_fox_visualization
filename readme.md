@@ -8,3 +8,17 @@ came out, they were *really* not great.
 
 So, I put together this script (and the report it generates) to try to understand
 how bad the actual state of affairs is. Turns out, not great.
+
+The Report:
+-------------------------
+
+The code is in the report.Rmd file, if you want to see the latest
+version, click [here](https://rawgit.com/earino/ufc_on_fox_visualization/master/report.html)
+
+### Libraries needed:
+
+* forecast
+* lubridate
+* plyr
+* ggplot2
+* gtools
