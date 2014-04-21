@@ -32,27 +32,20 @@ ratings$year <- year(as.Date(ratings$date))
 ratings <- merge(ratings, ddply(ratings, "quarters", summarize, quarters.viewers = sum(viewers)), 
     by = "quarters")
 
+```
 
-head(ratings)
+
+Let's just get a raw summary of viewership data:
+
+
+```r
+summary(ratings$viewers)
 ```
 
 ```
-##   quarters          show viewers rating       date id viewers_quartiles
-## 1       Q1 UFC on FOX  2    4.70    2.6 2012-01-28  2                 4
-## 2       Q1 UFC on FOX  6    4.22    2.4 2013-01-26  6                 3
-## 3       Q1 UFC on FOX 10    3.22    1.9 2014-01-25 10                 2
-## 4       Q2 UFC on FOX  3    2.42    1.5 2012-05-12  3                 1
-## 5       Q2 UFC on FOX  7    3.70    2.2 2013-04-20  7                 3
-## 6       Q2 UFC on FOX 11    1.99    0.8 2014-04-19 11                 1
-##   rating_quartiles month year quarters.viewers
-## 1                4     1 2012            12.14
-## 2                3     1 2013            12.14
-## 3                2     1 2014            12.14
-## 4                1     5 2012             8.11
-## 5                3     4 2013             8.11
-## 6                1     4 2014             8.11
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.99    2.43    3.22    3.45    4.31    5.70
 ```
-
 
 This is what it looks like when we plot viership by date, add a loess smoothed fit, and color code based on quartile:
 
@@ -64,7 +57,7 @@ ggplot(ratings, aes(x = date, y = viewers)) + geom_histogram(aes(fill = viewers_
     ggtitle("Viewership of UFC On Fox Shows")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
 For fun, let's just plot by viewing quarter, they're stable (and low) for their 
@@ -79,7 +72,7 @@ ggplot(ratings, aes(x = id, y = viewers, xmin = 0)) + geom_histogram(aes(fill = 
     xlab("Event Number") + ylab("Viewers (in Millions)")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 
 If we stack them up by quarter, how obvious is the trend?
@@ -90,7 +83,7 @@ ggplot(ratings, aes(x = quarters, y = viewers)) + geom_histogram(aes(fill = show
     stat = "identity") + scale_fill_brewer(palette = "Spectral")
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 
 The bubble plot definitely shows a clear trend when we graph across the 
@@ -104,7 +97,7 @@ ggplot(ratings, aes(x = date, y = viewers, size = viewers)) + geom_point(aes(fil
     ggtitle("UFC on Fox events, by Viewership, by Viewer Quartile")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
 
 
 If we break it down by year, it gets even more brutal:
@@ -117,7 +110,7 @@ ggplot(ratings, aes(x = factor(month), y = viewers, size = viewers)) + geom_poin
     ggtitle("UFC on Fox events, by Viewership, by Viewer Quartile") + facet_wrap(~year)
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 
 So, let's use some fun tools, let's use the forecast package. It's not a good
@@ -132,7 +125,7 @@ preds <- forecast(fit, nrow(ratings))
 plot(preds, ylim = c(-1, 8))
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
 
 TODO:

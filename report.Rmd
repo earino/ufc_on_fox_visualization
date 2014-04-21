@@ -33,10 +33,13 @@ ratings <-merge(ratings, ddply(ratings, 'quarters', summarize,
                 by="quarters")
 
 
-head(ratings)
-
 ```
 
+Let's just get a raw summary of viewership data:
+
+```{r}
+summary(ratings$viewers)
+```
 This is what it looks like when we plot viership by date, add a loess smoothed fit, and color code based on quartile:
 
 ```{r fig.width=7, fig.height=6}
