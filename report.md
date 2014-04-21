@@ -23,8 +23,8 @@ library(plyr)
 ratings <- read.csv("ratings.csv")
 ratings$id <- 1:nrow(ratings)
 ratings$date <- as.Date(ratings$date)
-ratings$viewers_quartiles <- as.numeric(quantcut(ratings$viewers))
-ratings$rating_quartiles <- as.numeric(quantcut(ratings$rating))
+ratings$overall_viewers_quartiles <- as.numeric(quantcut(ratings$viewers))
+# ratings$rating_quartiles <- as.numeric(quantcut(ratings$rating))
 ratings$quarters <- quarters(as.Date(ratings$date))
 ratings$month <- month(as.Date(ratings$date))
 ratings$year <- year(as.Date(ratings$date))
@@ -32,14 +32,19 @@ ratings$year <- year(as.Date(ratings$date))
 ratings <- merge(ratings, ddply(ratings, "quarters", summarize, quarters.viewers = sum(viewers)), 
     by = "quarters")
 
+ufc_ratings <- subset(ratings, promotion == "ufc")
+ufc_ratings$viewers_quartiles <- as.numeric(quantcut(ufc_ratings$viewers))
 ```
 
+
+UFC Ratings
+===================
 
 Let's just get a raw summary of viewership data:
 
 
 ```r
-summary(ratings$viewers)
+summary(ufc_ratings$viewers)
 ```
 
 ```
@@ -51,7 +56,7 @@ This is what it looks like when we plot viership by date, add a loess smoothed f
 
 
 ```r
-ggplot(ratings, aes(x = date, y = viewers)) + geom_histogram(aes(fill = viewers_quartiles), 
+ggplot(ufc_ratings, aes(x = date, y = viewers)) + geom_histogram(aes(fill = viewers_quartiles), 
     stat = "identity") + geom_smooth(method = "loess") + geom_text(aes(label = show), 
     angle = 90, hjust = -0.05, size = 4) + ylab("Viewers (in millions)") + xlab("Date of Show") + 
     ggtitle("Viewership of UFC On Fox Shows")
@@ -72,7 +77,7 @@ and Q4 is pretty drastic :
 
 
 ```r
-ggplot(ratings, aes(x = id, y = viewers, xmin = 0)) + geom_histogram(aes(fill = viewers_quartiles), 
+ggplot(ufc_ratings, aes(x = id, y = viewers, xmin = 0)) + geom_histogram(aes(fill = viewers_quartiles), 
     stat = "identity") + facet_wrap(~quarters) + geom_text(aes(label = show, 
     y = 2), angle = 90, size = 4) + geom_smooth(method = "lm", se = FALSE) + 
     xlab("Event Number") + ylab("Viewers (in Millions)")
@@ -92,7 +97,7 @@ If we stack them up by quarter, how obvious is the trend?
 
 
 ```r
-ggplot(ratings, aes(x = quarters, y = viewers)) + geom_histogram(aes(fill = show), 
+ggplot(ufc_ratings, aes(x = quarters, y = viewers)) + geom_histogram(aes(fill = show), 
     stat = "identity") + scale_fill_brewer(palette = "Spectral")
 ```
 
@@ -108,7 +113,7 @@ full timeline:
 
 
 ```r
-ggplot(ratings, aes(x = date, y = viewers, size = viewers)) + geom_point(aes(fill = factor(viewers_quartiles)), 
+ggplot(ufc_ratings, aes(x = date, y = viewers, size = viewers)) + geom_point(aes(fill = factor(viewers_quartiles)), 
     guide = FALSE, shape = 21) + scale_size(trans = "log2", range = c(2, 20)) + 
     guides(size = FALSE) + xlab("Date of Event") + ylab("Number of Viewers (in millions)") + 
     ggtitle("UFC on Fox events, by Viewership, by Viewer Quartile")
@@ -124,7 +129,7 @@ If we break it down by year, it gets even more brutal:
 
 
 ```r
-ggplot(ratings, aes(x = factor(month), y = viewers, size = viewers)) + geom_point(aes(fill = factor(viewers_quartiles)), 
+ggplot(ufc_ratings, aes(x = factor(month), y = viewers, size = viewers)) + geom_point(aes(fill = factor(viewers_quartiles)), 
     guide = FALSE, shape = 21) + scale_size(trans = "log2", range = c(2, 20)) + 
     guides(size = FALSE) + xlab("Date of Event") + ylab("Number of Viewers (in millions)") + 
     ggtitle("UFC on Fox events, by Viewership, by Viewer Quartile") + facet_wrap(~year)
@@ -141,10 +146,10 @@ sign when the forecast package actually predicts values below zero:
 
 
 ```r
-myts <- ts(ratings$viewers, frequency = 4, start = ratings[1, "date"])
+myts <- ts(ufc_ratings$viewers, frequency = 4, start = ratings[1, "date"])
 
 fit <- HoltWinters(myts)
-preds <- forecast(fit, nrow(ratings))
+preds <- forecast(fit, nrow(ufc_ratings))
 plot(preds, ylim = c(-1, 8))
 ```
 

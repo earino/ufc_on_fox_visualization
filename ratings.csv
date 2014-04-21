@@ -1,12 +1,69 @@
-show,viewers,rating,date
-UFC on FOX  1, 5.70, 3.1,2011-11-12
-UFC on FOX  2, 4.70, 2.6,2012-01-28
-UFC on FOX  3, 2.42, 1.5,2012-05-12
-UFC on FOX  4, 2.44, 1.4,2012-08-04
-UFC on FOX  5, 4.40, 2.5,2012-12-08
-UFC on FOX  6, 4.22, 2.4,2013-01-26
-UFC on FOX  7, 3.70, 2.2,2013-04-20
-UFC on FOX  8, 2.38, 1.5,2013-07-27
-UFC on FOX  9, 2.80, 1.8,2013-12-14
-UFC on FOX 10, 3.22, 1.9,2014-01-25
-UFC on FOX 11, 1.99, 0.8,2014-04-19
+id,promotion,show,viewers,rating,date,season,network
+1,ufc, UFC on FOX  1, 5.70, 3.1,2011-11-12,,FOX
+2,ufc, UFC on FOX  2, 4.70, 2.6,2012-01-28,,FOX
+3,ufc, UFC on FOX  3, 2.42, 1.5,2012-05-12,,FOX
+4,ufc, UFC on FOX  4, 2.44, 1.4,2012-08-04,,FOX
+5,ufc, UFC on FOX  5, 4.40, 2.5,2012-12-08,,FOX
+6,ufc, UFC on FOX  6, 4.22, 2.4,2013-01-26,,FOX
+7,ufc, UFC on FOX  7, 3.70, 2.2,2013-04-20,,FOX
+8,ufc, UFC on FOX  8, 2.38, 1.5,2013-07-27,,FOX
+9,ufc, UFC on FOX  9, 2.80, 1.8,2013-12-14,,FOX
+10,ufc, UFC on FOX 10, 3.22, 1.9,2014-01-25,,FOX
+11,ufc, UFC on FOX 11, 1.99, 0.8,2014-04-19,,FOX
+12,bellator, Bellator 60, 0.16, ,2012-03-09,6,MTV2
+13,bellator, Bellator 61, 0.108, ,2012-03-16,6,MTV2
+14,bellator, Bellator 62, 0.18, ,2012-03-23,6,MTV2
+15,bellator, Bellator 63, 0.14, ,2012-03-30,6,MTV2
+16,bellator, Bellator 64, 0.18, ,2012-04-06,6,MTV2
+17,bellator, Bellator 65, 0.16, ,2012-04-13,6,MTV2
+18,bellator, Bellator 66, 0.108, ,2012-04-20,6,MTV2
+19,bellator, Bellator 67, 0.165, ,2012-05-04,6,MTV2
+20,bellator, Bellator 68, 0.169, ,2012-05-11,6,MTV2
+21,bellator, Bellator 69, 0.209, ,2012-05-18,6,MTV2
+22,bellator, Bellator 70, 0.119, ,2012-05-25,6,MTV2
+23,bellator, Bellator 71, 0.193, ,2012-06-22,summer,MTV2
+24,bellator, Bellator 72, 0.193, ,2012-07-20,summer,MTV2
+25,bellator, Bellator 73, 0.167, ,2012-08-24,summer,MTV2
+26,bellator, Bellator 74, 0.190, ,2012-09-28,7,MTV2
+27,bellator, Bellator 75, 0.145, ,2012-10-05,7,MTV2
+28,bellator, Bellator 76, 0.175, ,2012-10-12,7,MTV2
+29,bellator, Bellator 77, 0.149, ,2012-10-19,7,MTV2
+30,bellator, Bellator 78, 0.154, ,2012-10-26,7,MTV2
+31,bellator, Bellator 79, 0.220, ,2012-11-02,7,MTV2
+32,bellator, Bellator 80, 0.148, ,2012-11-09,7,MTV2
+33,bellator, Bellator 81, 0.149, ,2012-11-16,7,MTV2
+34,bellator, Bellator 82, 0.156, ,2012-11-30,7,MTV2
+35,bellator, Bellator 83, 0.105, ,2012-12-07,7,MTV2
+36,bellator, Bellator 84, 0.191, ,2012-12-14,7,MTV2
+37,bellator, Bellator 85, 0.938, ,2013-01-17,8,SpikeTV
+38,bellator, Bellator 86, 0.812, ,2013-01-24,8,SpikeTV
+39,bellator, Bellator 87, 0.705, ,2013-01-31,8,SpikeTV
+40,bellator, Bellator 88, 0.807, ,2013-02-07,8,SpikeTV
+41,bellator, Bellator 89, 0.719, ,2013-02-14,8,SpikeTV
+42,bellator, Bellator 90, 0.737, ,2013-02-21,8,SpikeTV
+43,bellator, Bellator 91, 0.901, ,2013-02-28,8,SpikeTV
+44,bellator, Bellator 92, 0.741, ,2013-03-07,8,SpikeTV
+45,bellator, Bellator 93, 0.748, ,2013-03-21,8,SpikeTV
+46,bellator, Bellator 94, 0.713, ,2013-03-28,8,SpikeTV
+47,bellator, Bellator 95, 0.901, ,2013-04-04,8,SpikeTV
+48,bellator, Bellator 96, 0.480, ,2013-06-19,summer,SpikeTV
+49,bellator, Bellator 97, 0.679, ,2013-07-31,summer,SpikeTV
+50,bellator, Bellator 98, 0.437, ,2013-09-07,9,SpikeTV
+51,bellator, Bellator 99, 0.660, ,2013-09-13,9,SpikeTV
+52,bellator, Bellator 100, 0.7, ,2013-09-20,9,SpikeTV
+53,bellator, Bellator 101, 0.649, ,2013-09-27,9,SpikeTV
+54,bellator, Bellator 102, 0.675, ,2013-10-04,9,SpikeTV
+55,bellator, Bellator 103, 0.539, ,2013-10-11,9,SpikeTV
+56,bellator, Bellator 104, 0.615, ,2013-10-18,9,SpikeTV
+57,bellator, Bellator 105, 0.520, ,2013-10-25,9,SpikeTV
+58,bellator, Bellator 106, 1.1, ,2013-11-02,9,SpikeTV
+59,bellator, Bellator 107, 0.683, ,2013-11-08,9,SpikeTV
+60,bellator, Bellator 108, 0.793, ,2013-11-15,9,SpikeTV
+61,bellator, Bellator 109, 0.691, ,2013-11-22,9,SpikeTV
+62,bellator, Bellator 110, 0.880, ,2014-02-28,10,SpikeTV
+63,bellator, Bellator 111, 0.718, ,2014-03-07,10,SpikeTV
+64,bellator, Bellator 112, 0.699, ,2014-03-14,10,SpikeTV
+65,bellator, Bellator 113, 0.507, ,2014-03-21,10,SpikeTV
+66,bellator, Bellator 114, 0.880, ,2014-03-28,10,SpikeTV
+67,bellator, Bellator 115, 0.830, ,2014-04-04,10,SpikeTV
+68,bellator, Bellator 116, 0.642, ,2014-04-11,10,SpikeTV
