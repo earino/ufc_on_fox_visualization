@@ -284,17 +284,6 @@ ggplot(ratings, aes(x = factor(1), weight = viewers, fill = promotion)) + geom_b
     panel.grid.major = theme_blank(), panel.border = theme_blank()) + ggtitle("Bellator vs UFC Viewers")
 ```
 
-```
-## 'opts' is deprecated. Use 'theme' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
-```
-
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
 
 

@@ -249,7 +249,7 @@ It's clear that Bellator's individual ratings are noise, they
 just crawl along the bottom of the line. But how doe it look
 when we aggregate it?
 
-```{r fig.width=12, fig.height=6, warning=FALSE}
+```{r fig.width=12, fig.height=6, warning=FALSE, message=FALSE, error=FALSE}
 ggplot(ratings, aes(x=factor(1), weight=viewers, fill=promotion)) + 
   geom_bar(width=1) +
   coord_polar(theta="y") + 
