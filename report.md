@@ -32,6 +32,8 @@ ratings$year <- year(as.Date(ratings$date))
 ratings <- merge(ratings, ddply(ratings, "quarters", summarize, quarters.viewers = sum(viewers)), 
     by = "quarters")
 
+ratings <- ratings[with(ratings, order(id)), ]
+
 ufc_ratings <- subset(ratings, promotion == "ufc")
 ufc_ratings$viewers_quartiles <- as.numeric(quantcut(ufc_ratings$viewers))
 ufc_ratings <- ufc_ratings[with(ufc_ratings, order(id)), ]
@@ -245,15 +247,59 @@ sign when the forecast package actually predicts values below zero:
 
 
 ```r
-myts <- ts(bellator_ratings$viewers, frequency = 4, start = min(bellator_ratings$date))
+myts <- ts(bellator_ratings$viewers, frequency = 3, start = min(bellator_ratings$date))
 
 fit <- HoltWinters(myts)
-preds <- forecast(fit, nrow(ufc_ratings))
-plot(preds, ylim = c(-0, 2))
+preds <- forecast(fit, 12)
+plot(preds)
 ```
 
 ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
+
+I don't know that I trust this data, the frequency data is hard to do for events.
+
+Joint Data
+============================
+
+
+```r
+ggplot(ratings, aes(x = date, y = viewers)) + geom_histogram(aes(fill = promotion), 
+    width = 20, stat = "identity") + ylab("Viewers (in millions)") + xlab("Date of Show") + 
+    ggtitle("Viewership of UFC On Fox Shows")
+```
+
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
+
+
+It's clear that Bellator's individual ratings are noise, they
+just crawl along the bottom of the line. But how doe it look
+when we aggregate it?
+
+
+```r
+ggplot(ratings, aes(x = factor(1), weight = viewers, fill = promotion)) + geom_bar(width = 1) + 
+    coord_polar(theta = "y") + opts(axis.title.x = theme_blank(), axis.title.y = theme_blank(), 
+    axis.text.x = theme_blank(), axis.text.y = theme_blank(), panel.grid.minor = theme_blank(), 
+    panel.grid.major = theme_blank(), panel.border = theme_blank()) + ggtitle("Bellator vs UFC Viewers")
+```
+
+```
+## 'opts' is deprecated. Use 'theme' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+## 'theme_blank' is deprecated. Use 'element_blank' instead. (Deprecated; last used in version 0.9.1)
+```
+
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+
+
+So, the UFC is still clearly in the ratings lead, since this is just "on Fox" events
+vs all Bellator events.
 
 TODO:
 

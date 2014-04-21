@@ -7,7 +7,12 @@ great event and everyone at my house loved it, however when we the ratings
 came out, they were *really* not great.
 
 So, I put together this script (and the report it generates) to try to understand
-how bad the actual state of affairs is. Turns out, not great.
+how bad the actual state of affairs is. Turns out, not great, but not the end
+of the world.
+
+I have added the data from Bellator viewership from the same time period since the
+UFC has been on Fox. The trends are pretty interesting, honestly, but I think more
+than anything it shows that the future is uncertain.
 
 The Report:
 -------------------------
