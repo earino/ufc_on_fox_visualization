@@ -60,6 +60,12 @@ ggplot(ratings, aes(x = date, y = viewers)) + geom_histogram(aes(fill = viewers_
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 
+As you see in the graph above, the fill color is getting darker the further
+we get to the current date on the x axis, the darker the fill means the lower
+the quartile, the closer we get to current day, the lower the events rank. You'll
+also note that the most recent events actually underperform the loess fit line,
+so they are actually performing worse than a regression would estimate.
+
 For fun, let's just plot by viewing quarter, they're stable (and low) for their 
 big thanksgiving show, declining in Q2 slightly, Q1 is a pretty drastic drop, 
 and Q4 is pretty drastic :
@@ -75,6 +81,13 @@ ggplot(ratings, aes(x = id, y = viewers, xmin = 0)) + geom_histogram(aes(fill = 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 
+This shows that there definitely was a level of seasonality during the first few
+offerings of the UFC on Fox, however the seasonal potential bump has been leveled.
+This could be caused by a number of interesting socialogical reasons, my personal
+guess is that the seasonal bump has leveled due to hardcores innability to 
+re-convince their families that tuning in was a worthwhile endeavor. If you will
+the "newness" has worn off.
+
 If we stack them up by quarter, how obvious is the trend?
 
 
@@ -85,6 +98,10 @@ ggplot(ratings, aes(x = quarters, y = viewers)) + geom_histogram(aes(fill = show
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
+
+While the 4th quarter (the end of the year show) is still the king, it will
+be interesting to see if the stacked segments continue to grow smaller the higher
+up we go up the chart.
 
 The bubble plot definitely shows a clear trend when we graph across the 
 full timeline:
@@ -99,6 +116,9 @@ ggplot(ratings, aes(x = date, y = viewers, size = viewers)) + geom_point(aes(fil
 
 ![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
 
+Bigger bubbles at the top left show us that when we started, there was definitely
+buzz and promise to the UFC on Fox shows, buht a clear downward trend as we get
+closer to current day is clear, including the same effect of coloring by quartile.
 
 If we break it down by year, it gets even more brutal:
 
@@ -112,6 +132,9 @@ ggplot(ratings, aes(x = factor(month), y = viewers, size = viewers)) + geom_poin
 
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
+
+There is no question that as the years pass, the height and size of the bubbles
+is shrinking.
 
 So, let's use some fun tools, let's use the forecast package. It's not a good
 sign when the forecast package actually predicts values below zero:
@@ -127,6 +150,12 @@ plot(preds, ylim = c(-1, 8))
 
 ![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
+
+The forecast takes into account some level of seasonality, and of course any 
+number of interventions by Zuffa management and Fox can change this, but a 
+simple numerical forecast shows that the current trends leave most of the 
+probability of viewership well under 0. The shows will certainly stop airing
+before they actually cost Fox viewers on other shows :)
 
 TODO:
 
