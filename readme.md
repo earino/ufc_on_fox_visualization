@@ -13,7 +13,7 @@ The Report:
 -------------------------
 
 The code is in the report.Rmd file, if you want to see the latest
-version, click [here](https://rawgit.com/earino/ufc_on_fox_visualization/master/report.html)
+version, click [here](http://htmlpreview.github.io/?https://github.com/earino/ufc_on_fox_visualization/blob/master/report.html)
 
 ### Libraries needed:
 
